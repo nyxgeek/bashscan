@@ -5,11 +5,9 @@ if [ -z $1 ]; then
 	exit 1
 fi
 
-echo "Starting TCP portscan of $1"
-
 for i in `seq 1 1025`; do
 	nc -v -w1 -z $1 $i 2>/dev/null
 	if [ $? -eq 0 ]; then
-		echo "FOUND PORT $i OPEN ON $i" | tee -a found.txt
+		echo "FOUND PORT $i OPEN ON $1" | tee -a found.txt
 	fi
 done
